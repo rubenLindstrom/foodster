@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#tinderCards {
+  padding-top: 5vh;
+  position: relative;
+  height: 45vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#ingredients {
+  box-sizing: border-box;
+  flex: 1;
+}
+#swipeButtons {
+}
+#singleRecipe {
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
+  width: 100%;
+  transition: top 1s;
+  top: 100%;
+  z-index: 1;
+}
+#singleRecipe.open {
+  top: 0;
+  z-index: 1;
+}
+
+.pink-background::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background: linear-gradient(210deg, #fbced0 50%, orange);
+  clip-path: circle(47.6% at 50% 0);
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+  transition: all 0.5s ease;
+}

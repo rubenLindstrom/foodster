@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "img": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700%2C636",
+    "title": "Potatoes in a pot",
+    "time": "45min"
+  },
+  {
+    "id": 2,
+    "img": "https://images2.minutemediacdn.com/image/upload/c_crop,h_1126,w_2000,x_0,y_181/f_auto,q_auto,w_1100/v1554932288/shape/mentalfloss/12531-istock-637790866.jpg",
+    "title": "Disgusting burger",
+    "time": "1h"
+  },
+  {
+    "id": 3,
+    "img": "https://cdn.tasteatlas.com/images/toplistarticles/fc20fbcfe5cd4690ba0cb9614192303a.jpg?w=600&h=450",
+    "title": "Spaghetti",
+    "time": "15min"
+  }
+]

@@ -1,0 +1,24 @@
+#ingredients {
+  padding: 1rem 2rem;
+}
+
+#ingredients ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.ingredients-inner {
+  /* background-color: #fcee9f; */
+  border-radius: 6px;
+  overflow: auto;
+  padding: 6px;
+  background-color: #f1f1e1;
+}
+
+.ingredients-inner li {
+  display: flex;
+  margin-bottom: 6px;
+}
+.ingredients-inner li .MuiPaper-root {
+  flex: 1;
+}

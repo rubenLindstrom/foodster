@@ -1,0 +1,11 @@
+.header {
+  z-index: 100;
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+.logo {
+  object-fit: contain;
+  height: 40px;
+}

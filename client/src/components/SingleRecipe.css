@@ -1,0 +1,23 @@
+.top-bar {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.img-wrapper {
+  overflow: hidden;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  border-radius: 12px;
+  margin: auto;
+}
+
+.recipe-wrapper {
+  padding: 1rem;
+}
+
+.recipe-wrapper ol {
+  padding-left: 1rem;
+}
