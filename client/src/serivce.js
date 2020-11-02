@@ -27,8 +27,10 @@ axios.interceptors.response.use(
 );
 
 class ApiService {
-  getRecipes() {
-    return axios.get("http://localhost:8001").then((res) => res.data);
+  getRecipes(discarded) {
+    return axios
+      .post("http://localhost:8001", { discarded })
+      .then((res) => res.data);
   }
 }
 

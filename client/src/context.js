@@ -29,13 +29,13 @@ export const ContextProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    api.getRecipes().then(setRecipes);
+    api.getRecipes(discarded).then(setRecipes);
   }, []);
 
   useEffect(() => {
     if (recipes && discarded.length === recipes.length)
       api
-        .getRecipes()
+        .getRecipes(discarded)
         .then((recipes) =>
           setRecipes((prevRecipes) => prevRecipes.concat(recipes))
         );
@@ -45,11 +45,13 @@ export const ContextProvider = ({ children }) => {
     (dir === "right" ? handleSwipeRight : handleSwipeLeft)(id);
 
   const handleSwipeRight = (id) => {
+    console.log("swipe right on ", id);
     setCurrentRecipe(id);
     setDiscarded((prevDiscarded) => [id, ...prevDiscarded]);
   };
 
   const handleSwipeLeft = (id) => {
+    console.log("swipe left on ", id);
     setDiscarded((prevDiscarded) => [id, ...prevDiscarded]);
   };
 
