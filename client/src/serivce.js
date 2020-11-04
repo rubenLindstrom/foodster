@@ -27,7 +27,7 @@ axios.interceptors.response.use(
 );
 
 class ApiService {
-  getRecipes(discarded) {
+  getRecipes(discarded = []) {
     return axios
       .post("http://localhost:8001", { discarded })
       .then((res) => res.data);
