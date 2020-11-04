@@ -15,6 +15,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 #tinderCards {
@@ -28,6 +29,7 @@
 #ingredients {
   box-sizing: border-box;
   flex: 1;
+  overflow: hidden;
 }
 #swipeButtons {
 }

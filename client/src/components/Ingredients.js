@@ -43,52 +43,60 @@ const useStyles = makeStyles({
 });
 
 const Ingredients = () => {
-  const { whitelist, blacklist, handleBlacklist, handleWhitelist } = useContext(
-    Context
-  );
+  const {
+    whitelist,
+    blacklist,
+    handleBlacklist,
+    handleWhitelist,
+    recipes,
+    discarded,
+  } = useContext(Context);
+
   const classes = useStyles();
-  const ingredients = ["Milk", "Lemon", "Cinnamon", "Chocolate", "Apple"];
+  const ingredients = recipes?.[discarded.length].ingredients;
   return (
     <div id="ingredients">
-      <div className="ingredients-inner">
-        <ul>
-          {ingredients.map((i) => {
-            const PositiveIcon = whitelist.includes(i)
-              ? CheckCircleIcon
-              : CheckCircleOutlineIcon;
-            const NegativeIcon = blacklist.includes(i)
-              ? CancelIcon
-              : HighlightOffIcon;
-            return (
-              <li key={i}>
-                <Card className={classes.card}>
-                  <ButtonGroup className={classes.buttonGroup}>
-                    <Button
-                      className={classes.button}
-                      onClick={() => handleWhitelist(i)}
-                    >
-                      <PositiveIcon
-                        fontSize="default"
-                        className={`${classes.icon} ${classes.checkmarkIcon}`}
-                      />
-                    </Button>
-                    <Button
-                      className={classes.button}
-                      onClick={() => handleBlacklist(i)}
-                    >
-                      <NegativeIcon
-                        fontSize="default"
-                        className={`${classes.icon} ${classes.crossIcon}`}
-                      />
-                    </Button>
-                  </ButtonGroup>
-                  <p className={classes.ingredient}>{i}</p>
-                </Card>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      {ingredients && (
+        <div className="ingredients-inner">
+          <ul>
+            {ingredients.map((i) => {
+              const PositiveIcon = whitelist.includes(i)
+                ? CheckCircleIcon
+                : CheckCircleOutlineIcon;
+              const NegativeIcon = blacklist.includes(i)
+                ? CancelIcon
+                : HighlightOffIcon;
+              return (
+                <li key={i}>
+                  <Card className={classes.card}>
+                    <ButtonGroup className={classes.buttonGroup}>
+                      <Button
+                        className={classes.button}
+                        onClick={() => handleWhitelist(i)}
+                      >
+                        <PositiveIcon
+                          fontSize="default"
+                          className={`${classes.icon} ${classes.checkmarkIcon}`}
+                        />
+                      </Button>
+                      <Button
+                        className={classes.button}
+                        onClick={() => handleBlacklist(i)}
+                      >
+                        <NegativeIcon
+                          fontSize="default"
+                          className={`${classes.icon} ${classes.crossIcon}`}
+                        />
+                      </Button>
+                    </ButtonGroup>
+                    <p className={classes.ingredient}>{i}</p>
+                  </Card>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

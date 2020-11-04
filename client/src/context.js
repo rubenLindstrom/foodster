@@ -33,9 +33,9 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (recipes && discarded.length === recipes.length)
+    if (recipes && discarded.length === recipes.length - 1)
       api
-        .getRecipes(discarded)
+        .getRecipes(recipes.map(({ id }) => id))
         .then((recipes) =>
           setRecipes((prevRecipes) => prevRecipes.concat(recipes))
         );
@@ -59,11 +59,19 @@ export const ContextProvider = ({ children }) => {
     if (blacklist.includes(i))
       setBlacklist((prevstate) => prevstate.filter((e) => e !== i));
     else setBlacklist((prevstate) => [i, ...prevstate]);
+    if (whitelist.includes(i))
+      setWhitelist((prevWhitelist) =>
+        prevWhitelist.filter((ingredient) => ingredient != i)
+      );
   };
   const handleWhitelist = (i) => {
     if (whitelist.includes(i))
       setWhitelist((prevstate) => prevstate.filter((e) => e !== i));
     else setWhitelist((prevstate) => [i, ...prevstate]);
+    if (blacklist.includes(i))
+      setBlacklist((prevBlacklist) =>
+        prevBlacklist.filter((ingredient) => ingredient != i)
+      );
   };
 
   const handleButtonClick = (dir) => {
@@ -71,9 +79,9 @@ export const ContextProvider = ({ children }) => {
       (recipe) => !discarded.includes(recipe.id)
     );
     if (cardsLeft.length) {
-      const toBeSwiped = cardsLeft[cardsLeft.length - 1].id;
+      const toBeSwiped = cardsLeft[0].id;
       const index = recipes.findIndex(({ id }) => id === toBeSwiped);
-      cardRefs[index].current.swipe(dir);
+      cardRefs[cardRefs.length - (1 + index)].current.swipe(dir);
     }
   };
 
@@ -86,6 +94,7 @@ export const ContextProvider = ({ children }) => {
         whitelist,
         blacklist,
         cardRefs,
+        discarded,
         handleSwipe,
         handleBlacklist,
         handleWhitelist,
