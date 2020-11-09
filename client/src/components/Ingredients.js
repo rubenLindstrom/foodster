@@ -53,7 +53,7 @@ const Ingredients = () => {
   } = useContext(Context);
 
   const classes = useStyles();
-  const ingredients = recipes?.[discarded.length].ingredients;
+  const ingredients = recipes?.[discarded.length]?.ingredients;
   return (
     <div id="ingredients">
       {ingredients && (

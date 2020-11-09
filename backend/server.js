@@ -6,7 +6,8 @@ const bodyParser = require("body-parser");
 // App config
 const app = express();
 app.use(cors());
-app.use(bodyParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 const port = process.env.PORT || 8001;
 
 // Middlewares
@@ -15,9 +16,21 @@ const port = process.env.PORT || 8001;
 
 // API Endpoints
 app.post("/", (req, res) => {
-  const discarded = req.body.discarded;
-  console.log(discarded);
-  res.json(recipes.filter(({ id }) => !discarded.includes(id)).slice(0, 10));
+  const { discarded, whitelist, blacklist } = req.body;
+  res.json(
+    recipes
+      .filter(
+        ({ id, ingredients }) =>
+          (!discarded || !discarded.includes(id)) &&
+          (!blacklist ||
+            !blacklist.length ||
+            !ingredients.some((i) => blacklist.includes(i))) &&
+          (!whitelist ||
+            !whitelist.length ||
+            ingredients.some((i) => whitelist.includes(i)))
+      )
+      .slice(0, 10)
+  );
 });
 
 // Listener

@@ -6,10 +6,10 @@
 
 .img-wrapper {
   overflow: hidden;
-  height: 200px;
+  height: 230px;
   background-size: cover;
   background-position: center;
-  width: 200px;
+  width: 230px;
   border-radius: 12px;
   margin: auto;
 }
@@ -20,4 +20,17 @@
 
 .recipe-wrapper ol {
   padding-left: 1rem;
+}
+
+.dish-info {
+  display: flex;
+  align-items: center;
+}
+
+.dish-info .clock-icon {
+  margin-right: 2px;
+}
+
+.dish-info svg {
+  margin-left: 6px;
 }

@@ -27,9 +27,9 @@ axios.interceptors.response.use(
 );
 
 class ApiService {
-  getRecipes(discarded = []) {
+  getRecipes({ discarded = [], blacklist = [], whitelist = [] }) {
     return axios
-      .post("http://localhost:8001", { discarded })
+      .post("http://localhost:8001", { discarded, whitelist, blacklist })
       .then((res) => res.data);
   }
 }

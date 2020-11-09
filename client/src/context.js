@@ -35,7 +35,11 @@ export const ContextProvider = ({ children }) => {
   useEffect(() => {
     if (recipes && discarded.length === recipes.length - 1)
       api
-        .getRecipes(recipes.map(({ id }) => id))
+        .getRecipes({
+          discarded: recipes.map(({ id }) => id),
+          whitelist,
+          blacklist,
+        })
         .then((recipes) =>
           setRecipes((prevRecipes) => prevRecipes.concat(recipes))
         );
